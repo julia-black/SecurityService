@@ -11,8 +11,8 @@ import java.util.List;
 public class UsersController {
 
 
-    @RequestMapping(value = "/registr", method = RequestMethod.POST)
-    public String registr(String login, String password){
+    @RequestMapping(method = RequestMethod.POST, value = "/users")
+    public String registrUser(String login, String password){
         User user = null;
         try {
             user = new User(login, password);
@@ -24,18 +24,18 @@ public class UsersController {
         return "User succesfully registrateded! (login = " + user.getLogin() + ")";
     }
 
-    @RequestMapping(value = "/delete_user", method = RequestMethod.GET)
-    public String registr(Integer id){
+    @RequestMapping(method = RequestMethod.DELETE, value = "/users")
+    public String deleteUser(Integer id){
         usersDAO.delete(usersDAO.findById(id));
         return usersDAO.toString();
     }
-     @RequestMapping(value = "/get_all_users", method = RequestMethod.POST)
+     @RequestMapping(method = RequestMethod.GET, value = "/users")
      public List<User> getAllUsers(){
          List<User> users = (List<User>) usersDAO.findAll();
          return  users;
      }
 
-     @RequestMapping(value = "/get_all_users_string", method = RequestMethod.POST)
+     @RequestMapping(method = RequestMethod.GET, value = "/users/string")
      public String getAllUsersString(User newUser){
          System.out.println(newUser.getLogin());
          List<User> users = (List<User>) usersDAO.findAll();

@@ -23,21 +23,9 @@ public class User {
     @Column(name = "Password")
     private String password;
 
-   // private Set<GoodsEntity> contactTelDetails = new HashSet<GoodsEntity>();
-//
-   // @OneToMany(mappedBy = "use", cascade = CascadeType.ALL, orphanRemoval = true)
-   // public Set<GoodsEntity> getContactTelDetails() {
-   //     return this.contactTelDetails;
-   // }
-
-   // private String cart;
-
-    //private List<Good> cart;
-
     public User(String login, String password){
         this.login = login;
         this.password = password;
-       // this.cart = new ArrayList<>();
     }
 
 
@@ -45,12 +33,6 @@ public class User {
         Good good = new Good(id, name, price);
        // cart.add(good);
     }
-
-    //  public User(String login, String password, List<Good> cart) {
-//      this.login = login;
-//      this.password = password;
-//      this.cart = cart;
-//  }
     public User(){
 
     }
@@ -77,14 +59,6 @@ public class User {
     }
 
 
-  // public List<Good> getCart() {
-  //     return cart;
-  // }
-
-  // public void setCart(List<Good> cart) {
-  //     this.cart = cart;
-  // }
-
     public Integer getId() {
         return id;
     }
@@ -93,34 +67,4 @@ public class User {
         this.id = id;
     }
 
-   //public boolean buyGoodById(Integer id) {
-   //    for (int i = 0; i < cart.size() ; i++) {
-   //        if(cart.get(i).getId() == id){
-   //            System.out.println("Buying");
-   //            cart.remove(i);
-   //            return true;
-   //        }
-   //    }
-   //    return false;
-   //}
-
-   //public Good findById(Integer id){
-   //    Good good = null;
-   //    for (int i = 0; i < cart.size() ; i++) {
-   //        if(cart.get(i).getId() == id){
-   //            good = cart.get(i);
-   //        }
-   //    }
-   //    return good;
-   //}
-
-   //public boolean deleteGoodById(Integer id) {
-   //    for (int i = 0; i < cart.size() ; i++) {
-   //        if(cart.get(i).getId() == id){
-   //            cart.remove(i);
-   //            return true;
-   //        }
-   //    }
-   //    return false;
-   //}
 }
