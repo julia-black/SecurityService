@@ -10,8 +10,7 @@ import java.util.List;
 @RestController
 public class UsersController {
 
-
-    @RequestMapping(method = RequestMethod.POST, value = "/users")
+@RequestMapping(method = RequestMethod.POST, value = "/users")
     public String registrUser(String login, String password){
         User user = null;
         try {
@@ -24,28 +23,27 @@ public class UsersController {
         return "User succesfully registrateded! (login = " + user.getLogin() + ")";
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/users")
-    public String deleteUser(Integer id){
+    @RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}")
+    public String deleteUser(@PathVariable Integer id){
         usersDAO.delete(usersDAO.findById(id));
         return usersDAO.toString();
     }
-     @RequestMapping(method = RequestMethod.GET, value = "/users")
-     public List<User> getAllUsers(){
-         List<User> users = (List<User>) usersDAO.findAll();
-         return  users;
-     }
+    @RequestMapping(method = RequestMethod.GET, value = "/users")
+    public List<User> getAllUsers(){
+        List<User> users = (List<User>) usersDAO.findAll();
+        return  users;
+    }
 
-     @RequestMapping(method = RequestMethod.GET, value = "/users/string")
-     public String getAllUsersString(User newUser){
-         System.out.println(newUser.getLogin());
-         List<User> users = (List<User>) usersDAO.findAll();
-         String s = "";
-         for (User user:
-              users) {
-             s += user.getId() + "&" + user.getLogin() + "&" + user.getPassword() + "-";
-         }
-         return s;
-     }
+    @RequestMapping(method = RequestMethod.GET, value = "/users/string")
+    public String getAllUsersString(){
+        List<User> users = (List<User>) usersDAO.findAll();
+        String s = "";
+        for (User user:
+                users) {
+            s += user.getId() + "&" + user.getLogin() + "&" + user.getPassword() + "-";
+        }
+        return s;
+    }
 
     @Autowired
     private UsersDAO usersDAO;
